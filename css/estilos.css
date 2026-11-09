@@ -1,0 +1,263 @@
+/* Configuración general */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffb6d9, #c9a7ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+
+.contenedor {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Pantalla de bienvenida */
+
+.bienvenida {
+    background-color: white;
+    padding: 50px 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Decoración */
+
+.decoracion {
+    font-size: 35px;
+    margin: 20px 0;
+}
+
+/* Títulos */
+
+h1 {
+    color: #e84393;
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #8e44ad;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Texto */
+
+.bienvenida p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.bienvenida .suerte {
+    color: #e84393;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Adaptación a móviles */
+
+@media (max-width: 480px) {
+
+    .bienvenida {
+        padding: 35px 20px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .bienvenida p {
+        font-size: 16px;
+    }
+
+    .decoracion {
+        font-size: 27px;
+    }
+
+}
+.boton-empezar {
+    background: linear-gradient(135deg, #e84393, #9b59b6);
+    color: white;
+    border: none;
+    padding: 16px 35px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton-empezar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(232, 67, 147, 0.3);
+}
+
+/* Pantalla de juego */
+
+[hidden] {
+    display: none !important;
+}
+
+.juego {
+    width: 100%;
+    background-color: white;
+    padding: 35px 20px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.juego h1 {
+    font-size: clamp(29px, 8vw, 38px);
+    line-height: 1.15;
+}
+
+.subtitulo-juego {
+    color: #555;
+    font-size: clamp(16px, 4.5vw, 18px);
+    line-height: 1.5;
+    margin-top: 14px;
+}
+
+.progreso {
+    color: #8e44ad;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 24px 0 12px;
+}
+
+.reproductor {
+    display: block;
+    margin: 0 auto 24px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.formulario-respuesta {
+    text-align: left;
+}
+
+.formulario-respuesta fieldset {
+    border: 0;
+}
+
+.formulario-respuesta legend {
+    color: #8e44ad;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.opciones {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+}
+
+.opcion-invitado {
+    align-items: center;
+    background: #fff7fb;
+    border: 2px solid #f4d5e7;
+    border-radius: 14px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    gap: 10px;
+    min-height: 48px;
+    padding: 10px 12px;
+}
+
+.opcion-invitado:has(input:checked) {
+    background: #f7e8ff;
+    border-color: #9b59b6;
+}
+
+.opcion-invitado input {
+    accent-color: #e84393;
+    flex: 0 0 auto;
+}
+
+.acciones-juego {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.boton-confirmar,
+.boton-siguiente {
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    min-height: 48px;
+    padding: 12px 24px;
+}
+
+.boton-confirmar {
+    background: linear-gradient(135deg, #e84393, #9b59b6);
+    color: white;
+}
+
+.boton-siguiente {
+    background: #f9ca24;
+    color: #4a3750;
+}
+
+.boton-confirmar:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.resultado {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.45;
+    min-height: 25px;
+    text-align: center;
+}
+
+.resultado.correcto {
+    color: #16803c;
+}
+
+.resultado.incorrecto {
+    color: #bb2b5d;
+}
+
+#reiniciar {
+    margin-top: 20px;
+}
+
+@media (min-width: 600px) {
+
+    .juego {
+        padding: 45px 30px;
+    }
+
+    .opciones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}

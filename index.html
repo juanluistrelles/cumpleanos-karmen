@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>¡Felicidades Karmen!</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+        <section id="bienvenida" class="bienvenida">
+
+            <div class="decoracion">
+                🎈 🎉 🎂 🎁 🎈
+            </div>
+
+            <h1>¡FELICIDADES KARMEN!</h1>
+
+            <h2>¡Tenemos una sorpresa para ti!</h2>
+
+            <p>
+                Los invitados hemos grabado audios para ti:
+                tendrás que adivinar de quién es cada audio
+                por su voz.
+            </p>
+
+            <p class="suerte">
+                ¡Suerteee! ❤️
+            </p>
+            <button id="empezar" class="boton-empezar" type="button">
+                ¡COMENZAR EL JUEGO! 🎉
+            </button>
+            <div class="decoracion">
+                🎊 🎀 🎊
+            </div>
+
+        </section>
+
+        <section id="juego" class="juego" hidden aria-labelledby="titulo-juego">
+
+            <div class="decoracion">🎧 🎈 🎧</div>
+
+            <h1 id="titulo-juego">¿De quién es esta voz?</h1>
+            <p id="subtitulo-juego" class="subtitulo-juego">
+                Escucha el audio y elige a la persona que crees que habla.
+            </p>
+
+            <p id="progreso" class="progreso" aria-live="polite"></p>
+
+            <audio id="reproductor" class="reproductor" controls preload="metadata">
+                Tu navegador no puede reproducir este audio.
+            </audio>
+
+            <form id="formulario-respuesta" class="formulario-respuesta">
+                <fieldset id="grupo-opciones">
+                    <legend>Elige una opción:</legend>
+                    <div id="opciones" class="opciones"></div>
+                </fieldset>
+
+                <div class="acciones-juego">
+                    <button id="confirmar" class="boton-confirmar" type="submit" disabled>
+                        Confirmar respuesta
+                    </button>
+                    <button id="siguiente" class="boton-siguiente" type="button" hidden>
+                        Siguiente audio
+                    </button>
+                </div>
+
+                <p id="resultado" class="resultado" role="status" aria-live="polite"></p>
+            </form>
+
+            <button id="reiniciar" class="boton-siguiente" type="button" hidden>
+                Jugar de nuevo
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="js/invitados.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
