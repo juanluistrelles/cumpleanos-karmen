@@ -9,6 +9,13 @@
  * actualiza también su ruta aquí cuando cambie el nombre o la extensión.
  */
 const invitados = [
+    { id: "alisson", nombre: "Alisson", audio: "audios/invitados/Alisson.ogg" },
+    { id: "belen", nombre: "Belén", audio: "audios/invitados/Belén.ogg" },
     { id: "carolina", nombre: "Carolina", audio: "audios/invitados/Carolina.ogg" },
-    { id: "marta-y-lucia", nombre: "Marta y Lucía", audio: "audios/invitados/Marta y Lucia.ogg" }
+    { id: "fran", nombre: "Fran", audio: "audios/invitados/Fran.ogg" },
+    { id: "juanlu", nombre: "Juanlu", audio: "audios/invitados/Juanlu.ogg" },
+    { id: "marga", nombre: "Marga", audio: "audios/invitados/Marga.ogg" },
+    { id: "marta-y-lucia", nombre: "Marta y Lucía", audio: "audios/invitados/Marta y Lucia.ogg" },
+    { id: "moya", nombre: "Moya", audio: "audios/invitados/Moya.ogg" },
+    { id: "nati", nombre: "Nati", audio: "audios/invitados/Nati.ogg" }
 ];

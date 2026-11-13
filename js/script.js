@@ -21,11 +21,24 @@ const reiniciar = document.getElementById("reiniciar");
 
 let indiceActual = 0;
 let aciertos = 0;
+let audiosMezclados = [];
+let opcionesMezcladas = [];
+
+function mezclar(lista) {
+    const copia = [...lista];
+
+    for (let indice = copia.length - 1; indice > 0; indice -= 1) {
+        const indiceAleatorio = Math.floor(Math.random() * (indice + 1));
+        [copia[indice], copia[indiceAleatorio]] = [copia[indiceAleatorio], copia[indice]];
+    }
+
+    return copia;
+}
 
 function crearOpciones() {
     const fragmento = document.createDocumentFragment();
 
-    invitados.forEach((invitado) => {
+    opcionesMezcladas.forEach((invitado) => {
         const etiqueta = document.createElement("label");
         etiqueta.className = "opcion-invitado";
 
@@ -45,9 +58,9 @@ function crearOpciones() {
 }
 
 function cargarAudioActual() {
-    const invitadoActual = invitados[indiceActual];
+    const invitadoActual = audiosMezclados[indiceActual];
 
-    progreso.textContent = "Audio " + (indiceActual + 1) + " de " + invitados.length;
+    progreso.textContent = "Audio " + (indiceActual + 1) + " de " + audiosMezclados.length;
     reproductor.src = invitadoActual.audio;
     reproductor.load();
 
@@ -63,7 +76,7 @@ function comprobarRespuesta(evento) {
     evento.preventDefault();
 
     const respuesta = new FormData(formularioRespuesta).get("respuesta");
-    const invitadoActual = invitados[indiceActual];
+    const invitadoActual = audiosMezclados[indiceActual];
     const esCorrecta = respuesta === invitadoActual.id;
 
     if (esCorrecta) {
@@ -71,7 +84,7 @@ function comprobarRespuesta(evento) {
         resultado.textContent = "¡Correcto! 🎉";
         resultado.className = "resultado correcto";
     } else {
-        const invitadoElegido = invitados.find((invitado) => invitado.id === respuesta);
+        const invitadoElegido = opcionesMezcladas.find((invitado) => invitado.id === respuesta);
         resultado.textContent = "No era " + invitadoElegido.nombre + ". La respuesta era " + invitadoActual.nombre + ".";
         resultado.className = "resultado incorrecto";
     }
@@ -79,7 +92,7 @@ function comprobarRespuesta(evento) {
     grupoOpciones.disabled = true;
     confirmar.disabled = true;
     siguiente.hidden = false;
-    siguiente.textContent = indiceActual === invitados.length - 1
+    siguiente.textContent = indiceActual === audiosMezclados.length - 1
         ? "Ver resultado final"
         : "Siguiente audio";
 }
@@ -92,12 +105,12 @@ function terminarJuego() {
     formularioRespuesta.hidden = true;
     progreso.hidden = true;
     tituloJuego.textContent = "¡Juego terminado!";
-    subtituloJuego.textContent = "Has acertado " + aciertos + " de " + invitados.length + " audios. ¡Gracias por jugar!";
+    subtituloJuego.textContent = "Has acertado " + aciertos + " de " + audiosMezclados.length + " audios. ¡Gracias por jugar!";
     reiniciar.hidden = false;
 }
 
 function avanzar() {
-    if (indiceActual === invitados.length - 1) {
+    if (indiceActual === audiosMezclados.length - 1) {
         terminarJuego();
         return;
     }
@@ -109,6 +122,8 @@ function avanzar() {
 function iniciarJuego() {
     indiceActual = 0;
     aciertos = 0;
+    audiosMezclados = mezclar(invitados);
+    opcionesMezcladas = mezclar(invitados);
     bienvenida.hidden = true;
     juego.hidden = false;
     grupoOpciones.hidden = false;
